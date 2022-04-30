@@ -34,6 +34,11 @@ public class SortingAlg {
         InsertionSort ins = new InsertionSort(size);
         ins.sorting(sortedArr);
         /*****************************************/
+        // Creating an object of quick sort and running both Sorting and printing Methods :
+        QuickSort quickSort = new QuickSort(size, sortedArr );
+        quickSort.Sorting(sortedArr ,0, size-1);
+        quickSort.PrintSortedArray(sortedArr , size);
+
         
     }
     
