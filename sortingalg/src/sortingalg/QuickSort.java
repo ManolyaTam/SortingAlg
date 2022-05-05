@@ -1,46 +1,38 @@
 package sortingalg;
-public class QuickSort {
+public class QuickSort extends SortingClass{
     // Attributes :
     private int sizeOfArray ;
-    private int userArray [];
-
-    // constructor :
-    public QuickSort(int sizeOfArray , int[] userArray){
-        this.sizeOfArray = sizeOfArray;
-        this.userArray = userArray;
+    private int low;
+    private int high;
+    
+    public void setBoundries(int low, int high){
+        this.low = low;
+        this.high = high;
     }
 
-    // Getters and setters :
-    public int getSizeOfArray(){
-        return sizeOfArray;
+    
+    @Override
+    public void sort(int []userArray){
+        
+        sizeOfArray = userArray.length;
+        long time1 = System.nanoTime();// taking time in nanoSeconds before sorting
+        Qsort(userArray, low, high);
+        long time2 = System.nanoTime();// taking time in nanoSeconds after sorting
+        System.out.println("Time: " + (time2 - time1) + " ns");
     }
-
-    void SetSizeOfArray (int sizeOfArray){
-        this.sizeOfArray = sizeOfArray;
-    }
-
-    public int[] getArray(){
-        return userArray;
-    }
-
-    void SetArray (int[] userArray){
-        this.userArray = userArray;
-    }
-
-    //Sorting Method :
-    public void Sorting (int[] userArray , int low , int high ){
+ 
+    private static void Qsort(int[] userArray , int low , int high){
         if (low < high){
 
             int partitioningIndex = partition(userArray, low, high);
     
-            Sorting(userArray, low, partitioningIndex - 1);
-            Sorting(userArray, partitioningIndex + 1, high);
+            Qsort(userArray, low, partitioningIndex - 1);
+            Qsort(userArray, partitioningIndex + 1, high);
         }
-
     }
 
     // Partition : 
-    static int partition(int[] userArray, int low, int high){
+    private static int partition(int[] userArray, int low, int high){
      
         int pivot = userArray[high];    
         int i = (low - 1);
@@ -70,5 +62,5 @@ public class QuickSort {
             System.out.println(userArray[i] + " ");
         }
     }
-    
+
 }

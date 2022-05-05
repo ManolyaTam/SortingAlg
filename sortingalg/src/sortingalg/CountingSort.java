@@ -1,73 +1,56 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package sortingalg;
 
-import java.util.Vector;
-
-import java.util.Scanner;
-import java.util.Vector;
-/**
- *
- * @author mariam hasanat
- */
 public class CountingSort extends SortingClass{
-    int sizeOfArray;
+    int size;
+    int min;
+    int max;
 
-    public int getSizeOfArray() {
-        return sizeOfArray;
+    public CountingSort(int min, int max) {
+        this.min = min;
+        this.max = max;
     }
 
-    public void setSizeOfArray(int sizeOfArray) {
-        this.sizeOfArray = sizeOfArray;
-    }
-
-    public CountingSort(int sizeOfArray) {
-        this.sizeOfArray = sizeOfArray;
-    }
     
-
     @Override
-    public void sorting(int inputArr[]) {
+    public void sort(int []userArray) {
         
-        // calculate size of the array  
-        this.sizeOfArray = getSizeOfArray();  
-  
-        // create another array having same length of inputArr that will store elements in sorted way  
-        int sortedArr[] = new int[this.sizeOfArray];  
-  
-        // Create countArr that will store count of occurrence of each number and initialize it with 0  
-        int countArr[] = new int[256];  
-        for (int i = 0; i < 256; ++i) {  
+        this.size = userArray.length;          
+        
+        // create another array having same length of userArray that will store elements in sorted way  
+        int sortedArr[] = new int[size];  
+        
+        long time1 = System.nanoTime();// taking time in nanoSeconds before sorting
+        
+        // Create countArr that will store count of occurrence of each number and initialize it with min
+        int countArr[] = new int[(max - min)];  
+        for (int i = 0; i < (max - min) ; i++) {  
             countArr[i] = 0;  
-        }  
-  
+        }
+
         // use for loop to store the count of each number in the countArr  
-        for (int i = 0; i < this.sizeOfArray; ++i)  
-            ++countArr[inputArr[i]];  
-  
+        for (int i = 0; i < size; i++)  
+            countArr[userArray[i]]++;  
+
         // modify the value of countArr[i] so that countArr[i] now contains actual position of the current number in the sortedArr  
-        for (int i = 1; i <= 255; ++i)  
+        for (int i = 1; i < (max - min); i++)  
             countArr[i] += countArr[i - 1];  
-  
-        // iterate the inputArr in reverse order to perform counting sort.  
-        for (int i = sizeOfArray - 1; i >= 0; i--) {  
-            sortedArr[countArr[inputArr[i]] - 1] = inputArr[i];  
-            --countArr[inputArr[i]];  
+
+        // iterate the userArray in reverse order to perform counting sort.  
+        for (int i = size - 1; i >= 0; i--) {  
+            sortedArr[countArr[userArray[i]] - 1] = userArray[i];
+            countArr[userArray[i]]--;  
         }  
-        // Copy the sortedArr to inputArr, so that inputArr now contains sorted elements  
-        for (int i = 0; i < sizeOfArray; ++i)  
-            inputArr[i] = sortedArr[i];  
-          
+
+        for (int i = 0; i < size; ++i)
+            userArray[i] = sortedArr[i];
+        
+        long time2 = System.nanoTime();// taking time in nanoSeconds after sorting
+        
         // print sorted array elements  
-        System.out.print("Sorted numbers in the array is:\n");  
-        for (int i = 0; i < inputArr.length; ++i)  
-            System.out.print(inputArr[i]+"  ");  
- 
-        System.out.println("\n");
-    }
-     
-       
-    
-}
+//        for (int i = 0; i < sortedArr.length; ++i)  
+//            System.out.print(sortedArr[i]+"  ");  
+//        System.out.println();
+//        
+        System.out.println("Time: " + (time2 - time1) + " ns");
+        }
+    }       
