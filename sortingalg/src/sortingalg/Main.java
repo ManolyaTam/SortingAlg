@@ -53,11 +53,17 @@ public class Main {
             System.out.print("set #" + (i + 1) + " -> ");
             insertionS.sort(arrays.get(i));
         } 
+//MERGE SORT : 
+        System.out.println("************************************\nUSING MERGE SORT");
+        MergeSort meregSort = new MergeSort();
+        for(int i = 0; i < sets; i++){
+            System.out.print("set #" + (i + 1) + " -> ");            
+            meregSort.setBoundries( 0 , arrays.get(i).length-1);
+            meregSort.sort(arrays.get(i));
+            //meregSort.printSortedArray(arrays.get(i) , arrays.get(i).length); 
+        }
     }
-    
-//MERGE SORT : TODO
-    
-    
+   
     private static void  fillArray(int []s){
         for(int i = 0, n = s.length; i < n; i++){
             s[i] = (int)(Math.random() * 100);
