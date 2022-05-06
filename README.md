@@ -1,8 +1,8 @@
 # SortingAlg
-Graph with insertion Algo in it :
+Graph with insertion Algorithm:
 
-![](images/with%20insertion%20.jpeg)
+![](images/graph1.jpg)
 
-Graph without insertion Algo in it :
+Graph _without_ insertion Algorithm:
 
-![](images/without%20insertion.jpeg)
+![](images/graph2.jpg)
