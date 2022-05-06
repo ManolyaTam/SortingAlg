@@ -1,2 +1,2 @@
 # SortingAlg
-![](images/with%20insertion .jpeg)
+![](images/with%20insertion%20.jpeg)
