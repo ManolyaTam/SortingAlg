@@ -29,44 +29,45 @@ public class Main {
         //close scanner class object  
         input.close();  
 
-// COUNTING SORT:
+ //COUNTING SORT:
         System.out.println("************************************\nUSING COUNTING SORT");
-        CountingSort c = new CountingSort(0, 100);
+        CountingSort c = new CountingSort(0, 100000);
         for(int i = 0; i < sets; i++){
             System.out.print("set #" + (i + 1) + " -> ");
             c.sort(arrays.get(i));
         }
 
-//QUICK SORT
-        System.out.println("************************************\nUSING QUICK SORT");
-        QuickSort q = new QuickSort();
-        for(int i = 0; i < sets; i++){
-            System.out.print("set #" + (i + 1) + " -> ");            
-            q.setBoundries(0, arrays.get(i).length - 1);
-            q.sort(arrays.get(i));
-        }
+////QUICK SORT
+//        System.out.println("************************************\nUSING QUICK SORT");
+//        QuickSort q = new QuickSort();
+//        for(int i = 0; i < sets; i++){
+//            System.out.print("set #" + (i + 1) + " -> ");            
+//            q.setBoundries(0, arrays.get(i).length - 1);
+//            q.sort(arrays.get(i));
+//        }
         
-//INSERTION SORT
-        System.out.println("************************************\nUSING INSERTION SORT");
-        InsertionSort insertionS = new InsertionSort();
-        for(int i = 0; i < sets; i++){
-            System.out.print("set #" + (i + 1) + " -> ");
-            insertionS.sort(arrays.get(i));
-        } 
-//MERGE SORT : 
-        System.out.println("************************************\nUSING MERGE SORT");
-        MergeSort meregSort = new MergeSort();
-        for(int i = 0; i < sets; i++){
-            System.out.print("set #" + (i + 1) + " -> ");            
-            meregSort.setBoundries( 0 , arrays.get(i).length-1);
-            meregSort.sort(arrays.get(i));
-            //meregSort.printSortedArray(arrays.get(i) , arrays.get(i).length); 
-        }
+////INSERTION SORT
+//        System.out.println("************************************\nUSING INSERTION SORT");
+//        InsertionSort insertionS = new InsertionSort();
+//        for(int i = 0; i < sets; i++){
+//            System.out.print("set #" + (i + 1) + " -> ");
+//            insertionS.sort(arrays.get(i));
+//        } 
+////MERGE SORT : 
+//        System.out.println("************************************\nUSING MERGE SORT");
+//        MergeSort meregSort = new MergeSort();
+//        for(int i = 0; i < sets; i++){
+//            System.out.print("set #" + (i + 1) + " -> ");            
+//            meregSort.setBoundries( 0 , arrays.get(i).length-1);
+//            meregSort.sort(arrays.get(i));
+//            //meregSort.printSortedArray(arrays.get(i) , arrays.get(i).length); 
+//        }
+    
     }
    
     private static void  fillArray(int []s){
         for(int i = 0, n = s.length; i < n; i++){
-            s[i] = (int)(Math.random() * 100);
+            s[i] = (int)(Math.random() * 100000);
         }
     }
     
